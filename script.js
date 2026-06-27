@@ -173,10 +173,10 @@ function closeCart() {
     document.body.style.overflow = '';
 }
 
-// === CHECK AVAILABILITY BUTTONS ===
-const checkAvailBtns = document.querySelectorAll('.check-availability-btn');
+// === ADD TO CART BUTTONS ===
+const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
 
-checkAvailBtns.forEach(btn => {
+addToCartBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const id = btn.dataset.id;
