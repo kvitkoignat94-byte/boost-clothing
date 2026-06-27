@@ -151,7 +151,7 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Chunky кроссовки Triple</h3>
+                    <h3 class="product-name">Кроссовки</h3>
                     <p class="product-material">Смешанные материалы, подошва 4 см</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
@@ -195,7 +195,7 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Классическая Polo рубашка</h3>
+                    <h3 class="product-name">Polo</h3>
                     <p class="product-material">100% хлопок, пике</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
@@ -238,7 +238,7 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Oversized худи с киём</h3>
+                    <h3 class="product-name">Худи</h3>
                     <p class="product-material">Хлопок, 400г/м²</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
@@ -280,7 +280,7 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Карго штаны с карманами</h3>
+                    <h3 class="product-name">Карго</h3>
                     <p class="product-material">Хлопок, карго карманы</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
@@ -322,7 +322,7 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Бомбер куртка оверсайз</h3>
+                    <h3 class="product-name">Бомбер</h3>
                     <p class="product-material">Нейлон, утеплённый</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
@@ -364,7 +364,7 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Белые ретро кроссовки</h3>
+                    <h3 class="product-name">Кроссовки ретро</h3>
                     <p class="product-material">Кожа, классический силуэт</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
@@ -406,7 +406,7 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Базовая оверсайз футболка</h3>
+                    <h3 class="product-name">Футболка</h3>
                     <p class="product-material">100% хлопок, 200г/м²</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
@@ -449,7 +449,7 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Термо джоггеры</h3>
+                    <h3 class="product-name">Джоггеры</h3>
                     <p class="product-material">Технический флис</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
@@ -637,6 +637,63 @@
             </div>
         </div>
     </footer>
+
+    <!-- Quick View Modal -->
+    <div class="quickview-modal" id="quickviewModal">
+        <div class="quickview-backdrop" id="quickviewBackdrop"></div>
+        <div class="quickview-panel">
+            <button class="quickview-close" id="quickviewClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="quickview-content">
+                <div class="quickview-image-wrap">
+                    <img src="" alt="" class="quickview-img" id="quickviewImg">
+                    <button class="quickview-zoom-btn" id="quickviewZoomBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="quickview-info">
+                    <span class="quickview-label">Быстрый просмотр</span>
+                    <h2 class="quickview-name" id="quickviewName"></h2>
+                    <p class="quickview-material" id="quickviewMaterial"></p>
+                    <div class="quickview-price-wrap">
+                        <span class="quickview-price" id="quickviewPrice"></span>
+                        <span class="quickview-price-old" id="quickviewPriceOld"></span>
+                    </div>
+                    <div class="quickview-sizes">
+                        <span class="quickview-sizes-label">Размеры:</span>
+                        <div class="quickview-sizes-list" id="quickviewSizes"></div>
+                    </div>
+                    <div class="quickview-desc">
+                        <p>Качественная вещь для твоего гардероба. Прошла строгий контроль качества. Идеально сидит и долго носится.</p>
+                    </div>
+                    <div class="quickview-buttons">
+                        <a href="https://t.me/boost_42" target="_blank" class="quickview-tg-btn">Уточнить наличие</a>
+                        <button class="quickview-fav-btn" id="quickviewFavBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                            </svg>
+                        </button>
+                        <button class="quickview-cart-btn" id="quickviewCartBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 01-8 0"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">

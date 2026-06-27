@@ -122,6 +122,120 @@ filterBtns.forEach(btn => {
     });
 });
 
+// === QUICK VIEW MODAL ===
+const quickviewModal = document.getElementById('quickviewModal');
+const quickviewBackdrop = document.getElementById('quickviewBackdrop');
+const quickviewClose = document.getElementById('quickviewClose');
+const quickviewImg = document.getElementById('quickviewImg');
+const quickviewName = document.getElementById('quickviewName');
+const quickviewMaterial = document.getElementById('quickviewMaterial');
+const quickviewPrice = document.getElementById('quickviewPrice');
+const quickviewPriceOld = document.getElementById('quickviewPriceOld');
+const quickviewSizes = document.getElementById('quickviewSizes');
+const quickviewFavBtn = document.getElementById('quickviewFavBtn');
+const quickviewCartBtn = document.getElementById('quickviewCartBtn');
+const quickviewZoomBtn = document.getElementById('quickviewZoomBtn');
+
+let currentQuickViewProduct = null;
+
+const quickViewBtns = document.querySelectorAll('.quick-view-btn');
+quickViewBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = btn.closest('.product-card');
+        openQuickView(card);
+    });
+});
+
+function openQuickView(card) {
+    const img = card.querySelector('.product-img');
+    const name = card.querySelector('.product-name').textContent;
+    const material = card.querySelector('.product-material').textContent;
+    const price = card.querySelector('.price-current').textContent;
+    const priceOld = card.querySelector('.price-old');
+    const sizes = card.querySelectorAll('.size-option');
+    const id = card.querySelector('.add-to-cart-btn')?.dataset.id || '';
+    const priceNum = card.querySelector('.add-to-cart-btn')?.dataset.price || '';
+
+    currentQuickViewProduct = { id, name, price: priceNum };
+
+    quickviewImg.src = img.src;
+    quickviewImg.alt = name;
+    quickviewImg.classList.remove('zoomed');
+    quickviewName.textContent = name;
+    quickviewMaterial.textContent = material;
+    quickviewPrice.textContent = price;
+    quickviewPriceOld.textContent = priceOld ? priceOld.textContent : '';
+
+    quickviewSizes.innerHTML = '';
+    sizes.forEach(s => {
+        const sizeEl = document.createElement('span');
+        sizeEl.className = 'quickview-size' + (s.classList.contains('active') ? ' active' : '');
+        sizeEl.textContent = s.textContent;
+        sizeEl.addEventListener('click', () => {
+            quickviewSizes.querySelectorAll('.quickview-size').forEach(x => x.classList.remove('active'));
+            sizeEl.classList.add('active');
+        });
+        quickviewSizes.appendChild(sizeEl);
+    });
+
+    quickviewModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeQuickView() {
+    quickviewModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+quickviewBackdrop.addEventListener('click', closeQuickView);
+quickviewClose.addEventListener('click', closeQuickView);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeQuickView();
+});
+
+// Quick View Zoom
+quickviewImg.addEventListener('click', () => {
+    quickviewImg.classList.toggle('zoomed');
+});
+
+quickviewZoomBtn.addEventListener('click', () => {
+    quickviewImg.classList.toggle('zoomed');
+});
+
+// Quick View Favorite
+quickviewFavBtn.addEventListener('click', () => {
+    quickviewFavBtn.classList.toggle('active');
+});
+
+// Quick View Add to Cart
+quickviewCartBtn.addEventListener('click', () => {
+    if (currentQuickViewProduct && currentQuickViewProduct.id) {
+        const existingItem = cart.find(item => item.id === currentQuickViewProduct.id);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({
+                id: currentQuickViewProduct.id,
+                name: currentQuickViewProduct.name,
+                price: parseInt(currentQuickViewProduct.price),
+                quantity: 1
+            });
+        }
+        updateCart();
+
+        quickviewCartBtn.style.transform = 'scale(1.3)';
+        quickviewCartBtn.style.background = 'var(--accent-orange)';
+        quickviewCartBtn.style.borderColor = 'var(--accent-orange)';
+        setTimeout(() => {
+            quickviewCartBtn.style.transform = '';
+            quickviewCartBtn.style.background = '';
+            quickviewCartBtn.style.borderColor = '';
+        }, 400);
+    }
+});
+
 // === FAVORITES ===
 const favoriteBtns = document.querySelectorAll('.favorite-btn');
 
