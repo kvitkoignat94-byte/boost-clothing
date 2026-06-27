@@ -9,8 +9,8 @@ document.addEventListener('mousemove', (e) => {
 });
 
 function animateCursor() {
-    glowX += (mouseX - glowX) * 0.1;
-    glowY += (mouseY - glowY) * 0.1;
+    glowX += (mouseX - glowX) * 0.08;
+    glowY += (mouseY - glowY) * 0.08;
     cursorGlow.style.left = glowX + 'px';
     cursorGlow.style.top = glowY + 'px';
     requestAnimationFrame(animateCursor);
@@ -122,6 +122,34 @@ filterBtns.forEach(btn => {
     });
 });
 
+// === FAVORITES ===
+const favoriteBtns = document.querySelectorAll('.favorite-btn');
+
+favoriteBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        btn.classList.toggle('active');
+
+        if (btn.classList.contains('active')) {
+            btn.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                btn.style.transform = '';
+            }, 200);
+        }
+    });
+});
+
+// === SIZE SELECTION ===
+const sizeOptions = document.querySelectorAll('.size-option');
+
+sizeOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        const parent = option.closest('.size-options');
+        parent.querySelectorAll('.size-option').forEach(o => o.classList.remove('active'));
+        option.classList.add('active');
+    });
+});
+
 // === CART ===
 let cart = [];
 const cartBtn = document.getElementById('cartBtn');
@@ -131,7 +159,6 @@ const cartClose = document.getElementById('cartClose');
 const cartItems = document.getElementById('cartItems');
 const cartTotal = document.getElementById('cartTotal');
 const cartCount = document.querySelector('.cart-count');
-const addToCartBtns = document.querySelectorAll('.add-to-cart');
 
 cartBtn.addEventListener('click', () => {
     cartModal.classList.add('active');
@@ -146,7 +173,10 @@ function closeCart() {
     document.body.style.overflow = '';
 }
 
-addToCartBtns.forEach(btn => {
+// === CHECK AVAILABILITY BUTTONS ===
+const checkAvailBtns = document.querySelectorAll('.check-availability-btn');
+
+checkAvailBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const id = btn.dataset.id;
@@ -166,10 +196,13 @@ addToCartBtns.forEach(btn => {
 });
 
 function showAddedAnimation(btn) {
-    btn.style.transform = 'scale(1.3) rotate(90deg)';
+    const originalText = btn.textContent;
+    btn.textContent = 'Добавлено!';
+    btn.style.background = '#22c55e';
     setTimeout(() => {
-        btn.style.transform = '';
-    }, 300);
+        btn.textContent = originalText;
+        btn.style.background = '';
+    }, 1200);
 }
 
 function updateCart() {
@@ -178,7 +211,7 @@ function updateCart() {
 
     cartCount.textContent = totalItems;
     cartCount.classList.toggle('visible', totalItems > 0);
-    cartTotal.textContent = totalPrice.toLocaleString() + ' ₽';
+    cartTotal.textContent = totalPrice.toLocaleString() + ' \u20BD';
 
     if (cart.length === 0) {
         cartItems.innerHTML = '<div class="cart-empty">Корзина пуста</div>';
@@ -192,7 +225,7 @@ function updateCart() {
                 </div>
                 <div class="cart-item-details">
                     <span class="cart-item-name">${item.name}</span>
-                    <span class="cart-item-price">${item.price.toLocaleString()} ₽ × ${item.quantity}</span>
+                    <span class="cart-item-price">${item.price.toLocaleString()} \u20BD \u00D7 ${item.quantity}</span>
                     <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">Удалить</button>
                 </div>
             </div>
@@ -205,25 +238,27 @@ function removeFromCart(id) {
     updateCart();
 }
 
-// === FORM SUBMISSION ===
+// === CONTACT FORM ===
 const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    const btn = contactForm.querySelector('.submit-btn');
-    const originalText = btn.innerHTML;
+        const btn = contactForm.querySelector('.submit-btn');
+        const originalText = btn.innerHTML;
 
-    btn.innerHTML = '<span>Отправлено!</span>';
-    btn.style.background = '#22c55e';
-    btn.style.color = '#fff';
+        btn.innerHTML = '<span>Отправлено!</span>';
+        btn.style.background = '#22c55e';
+        btn.style.color = '#fff';
 
-    setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-        contactForm.reset();
-    }, 2000);
-});
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '';
+            btn.style.color = '';
+            contactForm.reset();
+        }, 2000);
+    });
+}
 
 // === SMOOTH SCROLL FOR ANCHOR LINKS ===
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>БУСТ — Минималистичная Одежда</title>
+    <title>БУСТ — Модная Одежда для Тех, Кто Задаёт Тренды</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Cursor follower -->
@@ -19,23 +19,32 @@
                 <span class="logo-dot"></span>
             </a>
             <div class="nav-links">
-                <a href="#catalog" class="nav-link" data-text="Каталог">Каталог</a>
-                <a href="#about" class="nav-link" data-text="О нас">О нас</a>
-                <a href="#contact" class="nav-link" data-text="Контакт">Контакт</a>
+                <a href="#catalog" class="nav-link">Каталог</a>
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#bonus" class="nav-link">Бонусы</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
             </div>
-            <button class="cart-btn" id="cartBtn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <path d="M16 10a4 4 0 01-8 0"></path>
-                </svg>
-                <span class="cart-count">0</span>
-            </button>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-actions">
+                <button class="search-btn" id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <button class="cart-btn" id="cartBtn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 01-8 0"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -43,33 +52,38 @@
     <div class="mobile-menu" id="mobileMenu">
         <a href="#catalog" class="mobile-link">Каталог</a>
         <a href="#about" class="mobile-link">О нас</a>
-        <a href="#contact" class="mobile-link">Контакт</a>
+        <a href="#bonus" class="mobile-link">Бонусы</a>
+        <a href="#contacts" class="mobile-link">Контакты</a>
     </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-bg">
+            <div class="hero-gradient"></div>
             <div class="grain-overlay"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-badge" data-animate="fade-up">Спринг/Лето 2026</div>
+            <div class="hero-badge" data-animate="fade-up">Новая коллекция 2026</div>
             <h1 class="hero-title" data-animate="fade-up" data-delay="100">
-                <span class="title-line">МИНИМАЛИЗМ</span>
-                <span class="title-line title-outline">В КАЖДОЙ</span>
-                <span class="title-line">ДЕТАЛИ</span>
+                <span class="title-line">ЗАДАВАЙ</span>
+                <span class="title-line title-accent">ТРЕНДЫ</span>
+                <span class="title-line">СЕЙЧАС</span>
             </h1>
-            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">Одежда для тех, кто ценит чистоту формы и совершенство материалов</p>
-            <a href="#catalog" class="hero-cta" data-animate="fade-up" data-delay="300">
-                <span>Смотреть коллекцию</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a>
+            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">Одежда, которая делает тебя заметным. Стиль без компромиссов.</p>
+            <div class="hero-buttons" data-animate="fade-up" data-delay="300">
+                <a href="#catalog" class="hero-cta">
+                    <span>Глянуть коллекцию</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="#about" class="hero-cta-outline">Узнать больше</a>
+            </div>
         </div>
         <div class="scroll-indicator" data-animate="fade-up" data-delay="400">
             <div class="scroll-line"></div>
-            <span>Scroll</span>
+            <span>Листай вниз</span>
         </div>
     </section>
 
@@ -77,25 +91,29 @@
     <div class="marquee-section">
         <div class="marquee-track">
             <div class="marquee-content">
-                <span>БЕЛЫЙ</span>
-                <span class="marquee-dot">●</span>
-                <span>ЧЕРНЫЙ</span>
-                <span class="marquee-dot">●</span>
-                <span>МИНИМАЛИЗМ</span>
+                <span>ХАЙП</span>
                 <span class="marquee-dot">●</span>
                 <span>СТИЛЬ</span>
                 <span class="marquee-dot">●</span>
-                <span>КАЧЕСТВО</span>
+                <span>ТРЕНДЫ</span>
                 <span class="marquee-dot">●</span>
-                <span>БЕЛЫЙ</span>
+                <span>СВОЙ ВАЙБ</span>
                 <span class="marquee-dot">●</span>
-                <span>ЧЕРНЫЙ</span>
+                <span> drip</span>
                 <span class="marquee-dot">●</span>
-                <span>МИНИМАЛИЗМ</span>
+                <span>СВОБОДА</span>
+                <span class="marquee-dot">●</span>
+                <span>ХАЙП</span>
                 <span class="marquee-dot">●</span>
                 <span>СТИЛЬ</span>
                 <span class="marquee-dot">●</span>
-                <span>КАЧЕСТВО</span>
+                <span>ТРЕНДЫ</span>
+                <span class="marquee-dot">●</span>
+                <span>СВОЙ ВАЙБ</span>
+                <span class="marquee-dot">●</span>
+                <span> drip</span>
+                <span class="marquee-dot">●</span>
+                <span>СВОБОДА</span>
                 <span class="marquee-dot">●</span>
             </div>
         </div>
@@ -105,16 +123,16 @@
     <section class="catalog" id="catalog">
         <div class="section-header">
             <span class="section-label" data-animate="fade-up">01 — Каталог</span>
-            <h2 class="section-title" data-animate="fade-up" data-delay="100">НАША КОЛЛЕКЦИЯ</h2>
-            <p class="section-desc" data-animate="fade-up" data-delay="200">Тщательно отобранные семплы для вашего гардероба</p>
+            <h2 class="section-title" data-animate="fade-up" data-delay="100">ТОПОВЫЕ ДРОПЫ</h2>
+            <p class="section-desc" data-animate="fade-up" data-delay="200">То, что реально заходит. Выбирай свой вайб</p>
         </div>
 
         <div class="catalog-filters" data-animate="fade-up" data-delay="300">
             <button class="filter-btn active" data-filter="all">Все</button>
             <button class="filter-btn" data-filter="tops">Верх</button>
             <button class="filter-btn" data-filter="bottoms">Низ</button>
-            <button class="filter-btn" data-filter="outer">Верхняя одежда</button>
-            <button class="filter-btn" data-filter="accessories">Аксессуары</button>
+            <button class="filter-btn" data-filter="outer">Куртки</button>
+            <button class="filter-btn" data-filter="accessories">Акселл</button>
         </div>
 
         <div class="products-grid">
@@ -131,20 +149,33 @@
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
-                    <span class="sample-badge">Семпл</span>
+                    <span class="sale-badge">SALE</span>
+                    <button class="favorite-btn" data-id="1">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Белая Oversized футболка</h3>
-                    <p class="product-material">100% органический хлопок</p>
-                    <div class="product-price">
-                        <span class="price">2 490 ₽</span>
-                        <button class="add-to-cart" data-id="1" data-name="Белая Oversized футболка" data-price="2490">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </button>
+                    <h3 class="product-name">Oversized оверсайз футболка</h3>
+                    <p class="product-material">Органик, 220г/м²</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размеры:</span>
+                        <div class="size-options">
+                            <span class="size-option">XS</span>
+                            <span class="size-option active">S</span>
+                            <span class="size-option">M</span>
+                            <span class="size-option">L</span>
+                            <span class="size-option">XL</span>
+                        </div>
                     </div>
+                    <div class="product-price">
+                        <div class="price-current">1 990 ₽</div>
+                        <div class="price-old">3 490 ₽</div>
+                    </div>
+                    <button class="check-availability-btn" data-id="1" data-name="Oversized оверсайз футболка" data-price="1990">
+                        Уточнить наличие
+                    </button>
                 </div>
             </div>
 
@@ -160,20 +191,30 @@
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
-                    <span class="sample-badge">Семпл</span>
+                    <button class="favorite-btn" data-id="2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Черные прямые брюки</h3>
-                    <p class="product-material">Полиэстер с эластаном</p>
-                    <div class="product-price">
-                        <span class="price">3 990 ₽</span>
-                        <button class="add-to-cart" data-id="2" data-name="Черные прямые брюки" data-price="3990">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </button>
+                    <h3 class="product-name">Прямые карго штаны</h3>
+                    <p class="product-material">Полиэстер, карго карманы</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размеры:</span>
+                        <div class="size-options">
+                            <span class="size-option">S</span>
+                            <span class="size-option">M</span>
+                            <span class="size-option active">L</span>
+                            <span class="size-option">XL</span>
+                        </div>
                     </div>
+                    <div class="product-price">
+                        <div class="price-current">3 490 ₽</div>
+                    </div>
+                    <button class="check-availability-btn" data-id="2" data-name="Прямые карго штаны" data-price="3490">
+                        Уточнить наличие
+                    </button>
                 </div>
             </div>
 
@@ -191,20 +232,33 @@
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
-                    <span class="sample-badge">Семпл</span>
+                    <span class="sale-badge">SALE</span>
+                    <button class="favorite-btn" data-id="3">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Белое пальто</h3>
-                    <p class="product-material">Шерсть с кашемиром</p>
-                    <div class="product-price">
-                        <span class="price">8 990 ₽</span>
-                        <button class="add-to-cart" data-id="3" data-name="Белое пальто" data-price="8990">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </button>
+                    <h3 class="product-name">Оверсайз худи с принтом</h3>
+                    <p class="product-material">Флис, утепление 300г/м²</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размеры:</span>
+                        <div class="size-options">
+                            <span class="size-option">S</span>
+                            <span class="size-option active">M</span>
+                            <span class="size-option">L</span>
+                            <span class="size-option">XL</span>
+                            <span class="size-option">XXL</span>
+                        </div>
                     </div>
+                    <div class="product-price">
+                        <div class="price-current">4 990 ₽</div>
+                        <div class="price-old">7 990 ₽</div>
+                    </div>
+                    <button class="check-availability-btn" data-id="3" data-name="Оверсайз худи с принтом" data-price="4990">
+                        Уточнить наличие
+                    </button>
                 </div>
             </div>
 
@@ -221,20 +275,27 @@
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
-                    <span class="sample-badge">Семпл</span>
+                    <button class="favorite-btn" data-id="4">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Черный мини-бэг</h3>
-                    <p class="product-material">Веганская кожа</p>
-                    <div class="product-price">
-                        <span class="price">4 490 ₽</span>
-                        <button class="add-to-cart" data-id="4" data-name="Черный мини-бэг" data-price="4490">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </button>
+                    <h3 class="product-name">Мини-бэг на цепи</h3>
+                    <p class="product-material">Веганская кожа, металлическая фурнитура</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размер:</span>
+                        <div class="size-options">
+                            <span class="size-option active">Один</span>
+                        </div>
                     </div>
+                    <div class="product-price">
+                        <div class="price-current">3 990 ₽</div>
+                    </div>
+                    <button class="check-availability-btn" data-id="4" data-name="Мини-бэг на цепи" data-price="3990">
+                        Уточнить наличие
+                    </button>
                 </div>
             </div>
 
@@ -251,20 +312,32 @@
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
-                    <span class="sample-badge">Семпл</span>
+                    <span class="sale-badge">SALE</span>
+                    <button class="favorite-btn" data-id="5">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Черная рубашка</h3>
-                    <p class="product-material">100% хлопок</p>
-                    <div class="product-price">
-                        <span class="price">3 290 ₽</span>
-                        <button class="add-to-cart" data-id="5" data-name="Черная рубашка" data-price="3290">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </button>
+                    <h3 class="product-name">Рубашка оверсайз</h3>
+                    <p class="product-material">100% хлопок, лёгкая</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размеры:</span>
+                        <div class="size-options">
+                            <span class="size-option">XS</span>
+                            <span class="size-option active">S</span>
+                            <span class="size-option">M</span>
+                            <span class="size-option">L</span>
+                        </div>
                     </div>
+                    <div class="product-price">
+                        <div class="price-current">2 490 ₽</div>
+                        <div class="price-old">3 990 ₽</div>
+                    </div>
+                    <button class="check-availability-btn" data-id="5" data-name="Рубашка оверсайз" data-price="2490">
+                        Уточнить наличие
+                    </button>
                 </div>
             </div>
 
@@ -281,20 +354,30 @@
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
-                    <span class="sample-badge">Семпл</span>
+                    <button class="favorite-btn" data-id="6">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Белые широкие штаны</h3>
-                    <p class="product-material">Хлопок с льном</p>
-                    <div class="product-price">
-                        <span class="price">4 190 ₽</span>
-                        <button class="add-to-cart" data-id="6" data-name="Белые широкие штаны" data-price="4190">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </button>
+                    <h3 class="product-name">Широкие джоггеры</h3>
+                    <p class="product-material">Хлопок, резинка на манжетах</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размеры:</span>
+                        <div class="size-options">
+                            <span class="size-option">S</span>
+                            <span class="size-option">M</span>
+                            <span class="size-option active">L</span>
+                            <span class="size-option">XL</span>
+                        </div>
                     </div>
+                    <div class="product-price">
+                        <div class="price-current">3 290 ₽</div>
+                    </div>
+                    <button class="check-availability-btn" data-id="6" data-name="Широкие джоггеры" data-price="3290">
+                        Уточнить наличие
+                    </button>
                 </div>
             </div>
         </div>
@@ -305,23 +388,23 @@
         <div class="about-container">
             <div class="about-content">
                 <span class="section-label" data-animate="fade-up">02 — О нас</span>
-                <h2 class="about-title" data-animate="fade-up" data-delay="100">ФИЛОСОФИЯ<br><span class="text-outline">ЧИСТОЙ ФОРМЫ</span></h2>
+                <h2 class="about-title" data-animate="fade-up" data-delay="100">МЫ НЕ СЛЕДУЕМ<br><span class="text-accent">ЗА ТРЕНДАМИ</span><br>МЫ ИХ СОЗДАЁМ</h2>
                 <div class="about-text" data-animate="fade-up" data-delay="200">
-                    <p>БУСТ — это бренд для тех, кто верит, что истинная элегантность кроется в простоте. Мы создаём одежду, которая говорит громче любых слов.</p>
-                    <p>Каждая деталь продумана до мелочей: от выбора ткани до последнего шва. Наши семплы — это возможность ощутить качество до покупки.</p>
+                    <p>БУСТ — это не просто магазин. Это комьюнити тех, кто не боится выделяться из толпы. Мы拾моднируем одежду, которая подчёркивает твой характер.</p>
+                    <p>Каждая вещь проходит строгий контроль качества. Мы знаем что такое хайп и делаем так, чтобы ты был в центре внимания.</p>
                 </div>
                 <div class="about-stats" data-animate="fade-up" data-delay="300">
                     <div class="stat">
-                        <span class="stat-number" data-count="2500">0</span>
-                        <span class="stat-label">Довольных клиентов</span>
+                        <span class="stat-number" data-count="5000">0</span>
+                        <span class="stat-label">Хайповых клиентов</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number" data-count="150">0</span>
+                        <span class="stat-number" data-count="200">0</span>
                         <span class="stat-label">Позиций в каталоге</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number" data-count="98">0</span>
-                        <span class="stat-label">% положительных отзывов</span>
+                        <span class="stat-number" data-count="99">0</span>
+                        <span class="stat-label">% повторных покупок</span>
                     </div>
                 </div>
             </div>
@@ -336,35 +419,120 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-container">
-            <div class="contact-content">
-                <span class="section-label" data-animate="fade-up">03 — Контакт</span>
-                <h2 class="contact-title" data-animate="fade-up" data-delay="100">СВЯЖИТЕСЬ<br>С НАМИ</h2>
-                <p class="contact-desc" data-animate="fade-up" data-delay="200">Готовы ответить на все ваши вопросы</p>
+    <!-- Bonus Program Section -->
+    <section class="bonus" id="bonus">
+        <div class="bonus-container">
+            <div class="bonus-content" data-animate="fade-up">
+                <span class="section-label">03 — Бонусная программа</span>
+                <h2 class="bonus-title">ЛОВИ <span class="text-accent">БОНУСЫ</span></h2>
+                <p class="bonus-desc">Скачи приложение, сканируй QR и получай кэшбэк 10% на каждую покупку. Плюс доступ к эксклюзивным дропам и ранним скидкам.</p>
+                <div class="bonus-features">
+                    <div class="bonus-feature">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <span>Кэшбэк 10%</span>
+                    </div>
+                    <div class="bonus-feature">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <span>Ранний доступ к скидкам</span>
+                    </div>
+                    <div class="bonus-feature">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </div>
+                        <span>Эксклюзивные дропы</span>
+                    </div>
+                </div>
             </div>
-            <form class="contact-form" data-animate="fade-up" data-delay="300">
-                <div class="form-group">
-                    <input type="text" id="name" required placeholder=" ">
-                    <label for="name">Ваше имя</label>
+            <div class="bonus-qr" data-animate="fade-left">
+                <div class="qr-placeholder">
+                    <div class="qr-box">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="30" height="30" rx="2" fill="currentColor"/>
+                            <rect x="60" y="10" width="30" height="30" rx="2" fill="currentColor"/>
+                            <rect x="10" y="60" width="30" height="30" rx="2" fill="currentColor"/>
+                            <rect x="15" y="15" width="20" height="20" rx="1" fill="var(--bg-dark)"/>
+                            <rect x="65" y="15" width="20" height="20" rx="1" fill="var(--bg-dark)"/>
+                            <rect x="15" y="65" width="20" height="20" rx="1" fill="var(--bg-dark)"/>
+                            <rect x="20" y="20" width="10" height="10" fill="currentColor"/>
+                            <rect x="70" y="20" width="10" height="10" fill="currentColor"/>
+                            <rect x="20" y="70" width="10" height="10" fill="currentColor"/>
+                            <rect x="50" y="50" width="10" height="10" fill="currentColor"/>
+                            <rect x="65" y="65" width="5" height="5" fill="currentColor"/>
+                            <rect x="75" y="65" width="5" height="5" fill="currentColor"/>
+                            <rect x="85" y="65" width="5" height="5" fill="currentColor"/>
+                            <rect x="65" y="75" width="5" height="5" fill="currentColor"/>
+                            <rect x="85" y="75" width="5" height="5" fill="currentColor"/>
+                            <rect x="65" y="85" width="5" height="5" fill="currentColor"/>
+                            <rect x="75" y="85" width="5" height="5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <p class="qr-text">Сканируй QR</p>
+                    <p class="qr-subtext">или ищи "БУСТ" в App Store / Google Play</p>
                 </div>
-                <div class="form-group">
-                    <input type="email" id="email" required placeholder=" ">
-                    <label for="email">Email</label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts / Stores Section -->
+    <section class="contacts" id="contacts">
+        <div class="contacts-container">
+            <div class="contacts-header" data-animate="fade-up">
+                <span class="section-label">04 — Где нас найти</span>
+                <h2 class="contacts-title">НАШИ <span class="text-accent">МАГАЗИНЫ</span></h2>
+            </div>
+            <div class="stores-grid">
+                <div class="store-card" data-animate="fade-up" data-delay="100">
+                    <div class="store-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <div class="store-info">
+                        <h3 class="store-name">БУСТ #1 — Дзержинского</h3>
+                        <p class="store-address">г. Кемерово, ул. Дзержинского, 8</p>
+                        <p class="store-hours">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Пн-Вс: 10:00 — 21:00
+                        </p>
+                    </div>
+                    <a href="#" class="store-map-btn">На карте</a>
                 </div>
-                <div class="form-group">
-                    <textarea id="message" rows="4" required placeholder=" "></textarea>
-                    <label for="message">Сообщение</label>
+                <div class="store-card" data-animate="fade-up" data-delay="200">
+                    <div class="store-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <div class="store-info">
+                        <h3 class="store-name">БУСТ #2 — ЦУМ</h3>
+                        <p class="store-address">г. Кемерово, ЦУМ, 2 этаж</p>
+                        <p class="store-hours">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Пн-Вс: 10:00 — 21:00
+                        </p>
+                    </div>
+                    <a href="#" class="store-map-btn">На карте</a>
                 </div>
-                <button type="submit" class="submit-btn">
-                    <span>Отправить</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </button>
-            </form>
+            </div>
         </div>
     </section>
 
@@ -380,10 +548,11 @@
                     <a href="#">Instagram</a>
                     <a href="#">Telegram</a>
                     <a href="#">VK</a>
+                    <a href="#">TikTok</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 БУСТ. Все права защищены.</span>
+                <span>&copy; 2026 БУСТ. Все права защищены.</span>
             </div>
         </div>
     </footer>
