@@ -132,20 +132,14 @@
             <button class="filter-btn" data-filter="tops">Верх</button>
             <button class="filter-btn" data-filter="bottoms">Низ</button>
             <button class="filter-btn" data-filter="outer">Куртки</button>
-            <button class="filter-btn" data-filter="accessories">Акселл</button>
+            <button class="filter-btn" data-filter="shoes">Кроссы</button>
         </div>
 
         <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card" data-category="tops" data-animate="fade-up">
+            <!-- Product 1: Balenciaga Triple S -->
+            <div class="product-card" data-category="shoes" data-animate="fade-up">
                 <div class="product-image">
-                    <div class="product-placeholder">
-                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="40" y="20" width="120" height="30" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M40 50 L20 80 L20 200 L180 200 L180 80 L160 50" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <line x1="100" y1="80" x2="100" y2="150" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
-                        </svg>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=650&fit=crop" alt="Баленсиага Triple S" class="product-img">
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
@@ -157,8 +151,52 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Oversized оверсайз футболка</h3>
-                    <p class="product-material">Органик, 220г/м²</p>
+                    <h3 class="product-name">Баленсиага Triple S</h3>
+                    <p class="product-material">Оригинал, смешанные материалы</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размеры:</span>
+                        <div class="size-options">
+                            <span class="size-option">38</span>
+                            <span class="size-option">39</span>
+                            <span class="size-option active">40</span>
+                            <span class="size-option">41</span>
+                            <span class="size-option">42</span>
+                            <span class="size-option">43</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <div class="price-current">24 990 ₽</div>
+                        <div class="price-old">32 000 ₽</div>
+                    </div>
+                    <div class="product-buttons">
+                        <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
+                        <button class="add-to-cart-btn" data-id="1" data-name="Баленсиага Triple S" data-price="24990">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 01-8 0"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Ralph Lauren Polo -->
+            <div class="product-card" data-category="tops" data-animate="fade-up" data-delay="100">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1586363104862-3a5e2ab60a13?w=500&h=650&fit=crop" alt="Polo Ralph Lauren" class="product-img">
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <button class="favorite-btn" data-id="2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Polo Ralph Lauren Classic</h3>
+                    <p class="product-material">100% хлопок, пике</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
                         <div class="size-options">
@@ -170,12 +208,11 @@
                         </div>
                     </div>
                     <div class="product-price">
-                        <div class="price-current">1 990 ₽</div>
-                        <div class="price-old">3 490 ₽</div>
+                        <div class="price-current">8 990 ₽</div>
                     </div>
                     <div class="product-buttons">
                         <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
-                        <button class="add-to-cart-btn" data-id="1" data-name="Oversized оверсайз футболка" data-price="1990">
+                        <button class="add-to-cart-btn" data-id="2" data-name="Polo Ralph Lauren Classic" data-price="8990">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
                                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -186,63 +223,10 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
-            <div class="product-card" data-category="bottoms" data-animate="fade-up" data-delay="100">
-                <div class="product-image">
-                    <div class="product-placeholder">
-                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M50 20 L150 20 L155 100 L120 220 L100 220 L100 100 L80 220 L60 220 L45 100 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <line x1="100" y1="20" x2="100" y2="100" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
-                        </svg>
-                    </div>
-                    <div class="product-overlay">
-                        <button class="quick-view-btn">Быстрый просмотр</button>
-                    </div>
-                    <button class="favorite-btn" data-id="2">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">Прямые карго штаны</h3>
-                    <p class="product-material">Полиэстер, карго карманы</p>
-                    <div class="product-sizes">
-                        <span class="size-label">Размеры:</span>
-                        <div class="size-options">
-                            <span class="size-option">S</span>
-                            <span class="size-option">M</span>
-                            <span class="size-option active">L</span>
-                            <span class="size-option">XL</span>
-                        </div>
-                    </div>
-                    <div class="product-price">
-                        <div class="price-current">3 490 ₽</div>
-                    </div>
-                    <div class="product-buttons">
-                        <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
-                        <button class="add-to-cart-btn" data-id="2" data-name="Прямые карго штаны" data-price="3490">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <path d="M16 10a4 4 0 01-8 0"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
+            <!-- Product 3: Raf Simons Hoodie -->
             <div class="product-card" data-category="outer" data-animate="fade-up" data-delay="200">
                 <div class="product-image">
-                    <div class="product-placeholder">
-                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M60 20 L140 20 L145 40 L180 60 L180 200 L20 200 L20 60 L55 40 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <line x1="100" y1="40" x2="100" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
-                            <circle cx="100" cy="60" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <circle cx="100" cy="90" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                        </svg>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=650&fit=crop" alt="Raf Simons Hoodie" class="product-img">
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
@@ -254,8 +238,8 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Оверсайз худи с принтом</h3>
-                    <p class="product-material">Флис, утепление 300г/м²</p>
+                    <h3 class="product-name">Raf Simons Oversized Hoodie</h3>
+                    <p class="product-material">Хлопок, 400г/м²</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
                         <div class="size-options">
@@ -263,16 +247,15 @@
                             <span class="size-option active">M</span>
                             <span class="size-option">L</span>
                             <span class="size-option">XL</span>
-                            <span class="size-option">XXL</span>
                         </div>
                     </div>
                     <div class="product-price">
-                        <div class="price-current">4 990 ₽</div>
-                        <div class="price-old">7 990 ₽</div>
+                        <div class="price-current">12 990 ₽</div>
+                        <div class="price-old">18 000 ₽</div>
                     </div>
                     <div class="product-buttons">
                         <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
-                        <button class="add-to-cart-btn" data-id="3" data-name="Оверсайз худи с принтом" data-price="4990">
+                        <button class="add-to-cart-btn" data-id="3" data-name="Raf Simons Oversized Hoodie" data-price="12990">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
                                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -283,16 +266,10 @@
                 </div>
             </div>
 
-            <!-- Product 4 -->
-            <div class="product-card" data-category="accessories" data-animate="fade-up" data-delay="300">
+            <!-- Product 4: Represent Cargo -->
+            <div class="product-card" data-category="bottoms" data-animate="fade-up" data-delay="300">
                 <div class="product-image">
-                    <div class="product-placeholder">
-                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="40" y="60" width="120" height="80" rx="10" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <line x1="40" y1="100" x2="160" y2="100" stroke="currentColor" stroke-width="1"/>
-                            <rect x="80" y="90" width="40" height="20" rx="2" stroke="currentColor" stroke-width="1" fill="none"/>
-                        </svg>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&h=650&fit=crop" alt="Represent Cargo" class="product-img">
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
@@ -303,20 +280,23 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Мини-бэг на цепи</h3>
-                    <p class="product-material">Веганская кожа, металлическая фурнитура</p>
+                    <h3 class="product-name">Represent Cargo Pants</h3>
+                    <p class="product-material">Хлопок, карго карманы</p>
                     <div class="product-sizes">
-                        <span class="size-label">Размер:</span>
+                        <span class="size-label">Размеры:</span>
                         <div class="size-options">
-                            <span class="size-option active">Один</span>
+                            <span class="size-option">S</span>
+                            <span class="size-option">M</span>
+                            <span class="size-option active">L</span>
+                            <span class="size-option">XL</span>
                         </div>
                     </div>
                     <div class="product-price">
-                        <div class="price-current">3 990 ₽</div>
+                        <div class="price-current">9 490 ₽</div>
                     </div>
                     <div class="product-buttons">
                         <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
-                        <button class="add-to-cart-btn" data-id="4" data-name="Мини-бэг на цепи" data-price="3990">
+                        <button class="add-to-cart-btn" data-id="4" data-name="Represent Cargo Pants" data-price="9490">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
                                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -327,16 +307,10 @@
                 </div>
             </div>
 
-            <!-- Product 5 -->
-            <div class="product-card" data-category="tops" data-animate="fade-up">
+            <!-- Product 5: Off-White Jacket -->
+            <div class="product-card" data-category="outer" data-animate="fade-up">
                 <div class="product-image">
-                    <div class="product-placeholder">
-                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M50 30 L70 20 L130 20 L150 30 L155 60 L170 70 L170 180 L30 180 L30 70 L45 60 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <line x1="100" y1="60" x2="100" y2="140" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
-                            <path d="M70 60 L130 60" stroke="currentColor" stroke-width="1"/>
-                        </svg>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=650&fit=crop" alt="Off-White Jacket" class="product-img">
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
@@ -348,24 +322,24 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Рубашка оверсайз</h3>
-                    <p class="product-material">100% хлопок, лёгкая</p>
+                    <h3 class="product-name">Off-White Bomber Jacket</h3>
+                    <p class="product-material">Нейлон, утеплённый</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
                         <div class="size-options">
-                            <span class="size-option">XS</span>
-                            <span class="size-option active">S</span>
-                            <span class="size-option">M</span>
+                            <span class="size-option">S</span>
+                            <span class="size-option active">M</span>
                             <span class="size-option">L</span>
+                            <span class="size-option">XL</span>
                         </div>
                     </div>
                     <div class="product-price">
-                        <div class="price-current">2 490 ₽</div>
-                        <div class="price-old">3 990 ₽</div>
+                        <div class="price-current">19 990 ₽</div>
+                        <div class="price-old">28 000 ₽</div>
                     </div>
                     <div class="product-buttons">
                         <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
-                        <button class="add-to-cart-btn" data-id="5" data-name="Рубашка оверсайз" data-price="2490">
+                        <button class="add-to-cart-btn" data-id="5" data-name="Off-White Bomber Jacket" data-price="19990">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
                                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -376,16 +350,10 @@
                 </div>
             </div>
 
-            <!-- Product 6 -->
-            <div class="product-card" data-category="bottoms" data-animate="fade-up" data-delay="100">
+            <!-- Product 6: New Balance 550 -->
+            <div class="product-card" data-category="shoes" data-animate="fade-up" data-delay="100">
                 <div class="product-image">
-                    <div class="product-placeholder">
-                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M60 30 L140 30 L140 60 L145 200 L55 200 L60 60 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <line x1="100" y1="30" x2="100" y2="60" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
-                            <rect x="85" y="40" width="30" height="15" rx="2" stroke="currentColor" stroke-width="1" fill="none"/>
-                        </svg>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=500&h=650&fit=crop" alt="New Balance 550" class="product-img">
                     <div class="product-overlay">
                         <button class="quick-view-btn">Быстрый просмотр</button>
                     </div>
@@ -396,8 +364,93 @@
                     </button>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Широкие джоггеры</h3>
-                    <p class="product-material">Хлопок, резинка на манжетах</p>
+                    <h3 class="product-name">New Balance 550 White</h3>
+                    <p class="product-material">Кожа, классика</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размеры:</span>
+                        <div class="size-options">
+                            <span class="size-option">38</span>
+                            <span class="size-option">39</span>
+                            <span class="size-option active">40</span>
+                            <span class="size-option">41</span>
+                            <span class="size-option">42</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <div class="price-current">11 990 ₽</div>
+                    </div>
+                    <div class="product-buttons">
+                        <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
+                        <button class="add-to-cart-btn" data-id="6" data-name="New Balance 550 White" data-price="11990">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 01-8 0"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7: Stussy T-Shirt -->
+            <div class="product-card" data-category="tops" data-animate="fade-up" data-delay="200">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=650&fit=crop" alt="Stussy T-Shirt" class="product-img">
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <button class="favorite-btn" data-id="7">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Stussy Basic Tee</h3>
+                    <p class="product-material">100% хлопок, 200г/м²</p>
+                    <div class="product-sizes">
+                        <span class="size-label">Размеры:</span>
+                        <div class="size-options">
+                            <span class="size-option">XS</span>
+                            <span class="size-option active">S</span>
+                            <span class="size-option">M</span>
+                            <span class="size-option">L</span>
+                            <span class="size-option">XL</span>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <div class="price-current">4 490 ₽</div>
+                    </div>
+                    <div class="product-buttons">
+                        <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
+                        <button class="add-to-cart-btn" data-id="7" data-name="Stussy Basic Tee" data-price="4490">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 01-8 0"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8: Nike Tech Fleece -->
+            <div class="product-card" data-category="bottoms" data-animate="fade-up" data-delay="300">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=500&h=650&fit=crop" alt="Nike Tech Fleece" class="product-img">
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <span class="sale-badge">SALE</span>
+                    <button class="favorite-btn" data-id="8">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Nike Tech Fleece Joggers</h3>
+                    <p class="product-material">Технический флис</p>
                     <div class="product-sizes">
                         <span class="size-label">Размеры:</span>
                         <div class="size-options">
@@ -408,11 +461,12 @@
                         </div>
                     </div>
                     <div class="product-price">
-                        <div class="price-current">3 290 ₽</div>
+                        <div class="price-current">7 990 ₽</div>
+                        <div class="price-old">10 000 ₽</div>
                     </div>
                     <div class="product-buttons">
                         <a href="https://t.me/boost_42" target="_blank" class="check-availability-btn">Уточнить наличие</a>
-                        <button class="add-to-cart-btn" data-id="6" data-name="Широкие джоггеры" data-price="3290">
+                        <button class="add-to-cart-btn" data-id="8" data-name="Nike Tech Fleece Joggers" data-price="7990">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
                                 <line x1="3" y1="6" x2="21" y2="6"></line>
