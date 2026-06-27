@@ -1531,6 +1531,7 @@ body:hover .cursor-glow {
     transition: transform 0.5s var(--transition-bounce);
     border: 1px solid var(--gray-700);
     padding: 3rem 2rem;
+    z-index: 1;
 }
 
 .cart-modal.active .auth-panel {
