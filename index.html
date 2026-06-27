@@ -650,6 +650,63 @@
         </div>
     </footer>
 
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-backdrop" id="searchBackdrop"></div>
+        <div class="search-panel">
+            <button class="search-close-btn" id="searchCloseBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="search-inner">
+                <div class="search-input-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Найти товар..." autofocus>
+                    <kbd class="search-kbd">ESC</kbd>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <p class="search-hint">Начни вводить название товара</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Size Select Modal -->
+    <div class="size-modal" id="sizeModal">
+        <div class="size-modal-backdrop" id="sizeModalBackdrop"></div>
+        <div class="size-modal-panel">
+            <button class="size-modal-close" id="sizeModalClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="size-modal-content">
+                <img src="" alt="" class="size-modal-img" id="sizeModalImg">
+                <div class="size-modal-info">
+                    <h3 class="size-modal-name" id="sizeModalName"></h3>
+                    <p class="size-modal-price" id="sizeModalPrice"></p>
+                    <p class="size-modal-desc">Выбери размер чтобы продолжить</p>
+                    <div class="size-modal-sizes" id="sizeModalSizes"></div>
+                    <p class="size-modal-error" id="sizeModalError">Выбери размер!</p>
+                    <div class="size-modal-actions">
+                        <button class="size-modal-confirm" id="sizeModalConfirm">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Готово</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Quick View Modal -->
     <div class="quickview-modal" id="quickviewModal">
         <div class="quickview-backdrop" id="quickviewBackdrop"></div>
@@ -784,6 +841,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>
