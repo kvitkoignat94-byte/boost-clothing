@@ -1,40 +1,29 @@
 // === CURSOR GLOW ===
 const cursorGlow = document.getElementById('cursorGlow');
-let mouseX = 0, mouseY = 0;
-let glowX = 0, glowY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-function animateCursor() {
+let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+(function animGlow() {
     glowX += (mouseX - glowX) * 0.08;
     glowY += (mouseY - glowY) * 0.08;
     cursorGlow.style.left = glowX + 'px';
     cursorGlow.style.top = glowY + 'px';
-    requestAnimationFrame(animateCursor);
-}
-animateCursor();
+    requestAnimationFrame(animGlow);
+})();
 
 // === NAVBAR SCROLL ===
-const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
 // === MOBILE MENU ===
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-
 mobileMenuBtn.addEventListener('click', () => {
     mobileMenuBtn.classList.toggle('active');
     mobileMenu.classList.toggle('active');
     document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
 });
-
-mobileLinks.forEach(link => {
+document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
         mobileMenuBtn.classList.remove('active');
         mobileMenu.classList.remove('active');
@@ -42,191 +31,32 @@ mobileLinks.forEach(link => {
     });
 });
 
-// === SCROLL ANIMATIONS ===
-const animatedElements = document.querySelectorAll('[data-animate]');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const delay = entry.target.dataset.delay || 0;
-            setTimeout(() => entry.target.classList.add('animated'), parseInt(delay));
-        }
-    });
-}, { root: null, rootMargin: '0px', threshold: 0.1 });
-animatedElements.forEach(el => observer.observe(el));
-
-// === COUNTER ANIMATION ===
-const statNumbers = document.querySelectorAll('.stat-number');
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const target = parseInt(entry.target.dataset.count);
-            animateCounter(entry.target, target);
-            counterObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-statNumbers.forEach(el => counterObserver.observe(el));
-
-function animateCounter(element, target) {
-    let current = 0;
-    const increment = target / 50;
-    const stepTime = 40;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target.toLocaleString();
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current).toLocaleString();
-        }
-    }, stepTime);
+// === MODAL HELPERS ===
+function openModal(id) {
+    const m = document.getElementById(id);
+    if (m) { m.classList.add('active'); document.body.style.overflow = 'hidden'; }
 }
-
-// === PRODUCT FILTER ===
-const filterBtns = document.querySelectorAll('.filter-btn');
-const productCards = document.querySelectorAll('.product-card');
-
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        productCards.forEach((card, index) => {
-            if (filter === 'all' || card.dataset.category === filter) {
-                card.classList.remove('hidden');
-                card.style.animation = `fadeUp 0.5s ease ${index * 0.1}s forwards`;
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-    });
-});
+function closeModal(id) {
+    const m = document.getElementById(id);
+    if (m) { m.classList.remove('active'); document.body.style.overflow = ''; }
+}
 
 // === CART ===
 let cart = [];
 let favorites = [];
 
-const cartBtn = document.getElementById('cartBtn');
-const cartModal = document.getElementById('cartModal');
-const cartBackdrop = document.getElementById('cartBackdrop');
-const cartClose = document.getElementById('cartClose');
-const cartItems = document.getElementById('cartItems');
-const cartTotal = document.getElementById('cartTotal');
-const cartCount = document.querySelector('.cart-count');
-
-const favNavBtn = document.getElementById('favNavBtn');
-const favModal = document.getElementById('favModal');
-const favBackdrop = document.getElementById('favBackdrop');
-const favClose = document.getElementById('favClose');
-const favItems = document.getElementById('favItems');
-const favCount = document.querySelector('.fav-count');
-
-const authBtn = document.getElementById('authBtn');
-const authModal = document.getElementById('authModal');
-const authBackdrop = document.getElementById('authBackdrop');
-const authClose = document.getElementById('authClose');
-
-const searchBtn = document.getElementById('searchBtn');
-
-// --- Open/Close Cart ---
-cartBtn.addEventListener('click', () => {
-    cartModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-});
-cartBackdrop.addEventListener('click', closeCart);
-cartClose.addEventListener('click', closeCart);
-function closeCart() {
-    cartModal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// --- Open/Close Favorites ---
-favNavBtn.addEventListener('click', () => {
-    renderFavorites();
-    favModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-});
-favBackdrop.addEventListener('click', closeFav);
-favClose.addEventListener('click', closeFav);
-function closeFav() {
-    favModal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// --- Open/Close Auth ---
-authBtn.addEventListener('click', () => {
-    authModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-});
-authBackdrop.addEventListener('click', closeAuth);
-authClose.addEventListener('click', closeAuth);
-function closeAuth() {
-    authModal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// --- Search ---
-searchBtn.addEventListener('click', () => {
-    const query = prompt('Поиск товаров:');
-    if (query && query.trim()) {
-        const q = query.toLowerCase().trim();
-        let found = 0;
-        productCards.forEach(card => {
-            const name = card.querySelector('.product-name').textContent.toLowerCase();
-            const material = card.querySelector('.product-material').textContent.toLowerCase();
-            if (name.includes(q) || material.includes(q)) {
-                card.classList.remove('hidden');
-                card.classList.add('animated');
-                found++;
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-        if (found === 0) {
-            alert('Ничего не найдено. Попробуй другой запрос.');
-            productCards.forEach(card => card.classList.remove('hidden'));
-        }
-        filterBtns.forEach(b => b.classList.remove('active'));
-        filterBtns[0].classList.add('active');
-        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
-    }
-});
-
-// === ADD TO CART ===
-const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
-addToCartBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const id = btn.dataset.id;
-        const name = btn.dataset.name;
-        const price = parseInt(btn.dataset.price);
-        const existingItem = cart.find(item => item.id === id);
-        if (existingItem) {
-            existingItem.quantity++;
-        } else {
-            cart.push({ id, name, price, quantity: 1 });
-        }
-        updateCart();
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-        btn.style.background = '#22c55e';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '';
-        }, 1000);
-    });
-});
-
 function updateCart() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    cartCount.textContent = totalItems;
-    cartCount.classList.toggle('visible', totalItems > 0);
-    cartTotal.textContent = totalPrice.toLocaleString() + ' \u20BD';
+    const totalItems = cart.reduce((s, i) => s + i.quantity, 0);
+    const totalPrice = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const cc = document.querySelector('.cart-count');
+    cc.textContent = totalItems;
+    cc.classList.toggle('visible', totalItems > 0);
+    document.getElementById('cartTotal').textContent = totalPrice.toLocaleString() + ' \u20BD';
+    const ci = document.getElementById('cartItems');
     if (cart.length === 0) {
-        cartItems.innerHTML = '<div class="cart-empty">Корзина пуста</div>';
+        ci.innerHTML = '<div class="cart-empty">Корзина пуста</div>';
     } else {
-        cartItems.innerHTML = cart.map(item => `
+        ci.innerHTML = cart.map(item => `
             <div class="cart-item">
                 <div class="cart-item-image">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:40px;height:40px;color:var(--gray-600)">
@@ -236,55 +66,25 @@ function updateCart() {
                 <div class="cart-item-details">
                     <span class="cart-item-name">${item.name}</span>
                     <span class="cart-item-price">${item.price.toLocaleString()} \u20BD \u00D7 ${item.quantity}</span>
-                    <button class="cart-item-remove" onclick="removeFromCart('${item.id}')">Удалить</button>
+                    <button class="cart-item-remove" data-remove-cart="${item.id}">Удалить</button>
                 </div>
             </div>
         `).join('');
     }
 }
 
-function removeFromCart(id) {
-    cart = cart.filter(item => item.id !== id);
-    updateCart();
-}
-
-// === FAVORITES ===
-const favoriteBtns = document.querySelectorAll('.favorite-btn');
-favoriteBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const id = btn.dataset.id;
-        const card = btn.closest('.product-card');
-        const name = card.querySelector('.product-name').textContent;
-        const img = card.querySelector('.product-img').src;
-        const price = card.querySelector('.price-current').textContent;
-
-        btn.classList.toggle('active');
-
-        if (btn.classList.contains('active')) {
-            if (!favorites.find(f => f.id === id)) {
-                favorites.push({ id, name, img, price });
-            }
-            btn.style.transform = 'scale(1.3)';
-            setTimeout(() => { btn.style.transform = ''; }, 200);
-        } else {
-            favorites = favorites.filter(f => f.id !== id);
-        }
-
-        updateFavCount();
-    });
-});
-
 function updateFavCount() {
-    favCount.textContent = favorites.length;
-    favCount.classList.toggle('visible', favorites.length > 0);
+    const fc = document.querySelector('.fav-count');
+    fc.textContent = favorites.length;
+    fc.classList.toggle('visible', favorites.length > 0);
 }
 
 function renderFavorites() {
+    const fi = document.getElementById('favItems');
     if (favorites.length === 0) {
-        favItems.innerHTML = '<div class="cart-empty">Список избранного пуст</div>';
+        fi.innerHTML = '<div class="cart-empty">Список избранного пуст</div>';
     } else {
-        favItems.innerHTML = favorites.map(item => `
+        fi.innerHTML = favorites.map(item => `
             <div class="cart-item">
                 <div class="cart-item-image">
                     <img src="${item.img}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
@@ -292,56 +92,217 @@ function renderFavorites() {
                 <div class="cart-item-details">
                     <span class="cart-item-name">${item.name}</span>
                     <span class="cart-item-price">${item.price}</span>
-                    <button class="cart-item-remove" onclick="removeFromFav('${item.id}')">Удалить</button>
+                    <button class="cart-item-remove" data-remove-fav="${item.id}">Удалить</button>
                 </div>
             </div>
         `).join('');
     }
 }
 
-function removeFromFav(id) {
-    favorites = favorites.filter(f => f.id !== id);
-    updateFavCount();
-    renderFavorites();
-    const btn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
-    if (btn) btn.classList.remove('active');
-}
+// === EVENT DELEGATION FOR ALL BUTTONS ===
+document.addEventListener('click', (e) => {
+    const t = e.target;
 
-// === SIZE SELECTION ===
-const sizeOptions = document.querySelectorAll('.size-option');
-sizeOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        const parent = option.closest('.size-options');
-        parent.querySelectorAll('.size-option').forEach(o => o.classList.remove('active'));
-        option.classList.add('active');
-    });
-});
+    // CART OPEN
+    if (t.closest('#cartBtn')) {
+        e.preventDefault();
+        openModal('cartModal');
+        return;
+    }
 
-// === QUICK VIEW MODAL ===
-const quickviewModal = document.getElementById('quickviewModal');
-const quickviewBackdrop = document.getElementById('quickviewBackdrop');
-const quickviewClose = document.getElementById('quickviewClose');
-const quickviewImg = document.getElementById('quickviewImg');
-const quickviewName = document.getElementById('quickviewName');
-const quickviewMaterial = document.getElementById('quickviewMaterial');
-const quickviewPrice = document.getElementById('quickviewPrice');
-const quickviewPriceOld = document.getElementById('quickviewPriceOld');
-const quickviewSizes = document.getElementById('quickviewSizes');
-const quickviewFavBtn = document.getElementById('quickviewFavBtn');
-const quickviewCartBtn = document.getElementById('quickviewCartBtn');
-const quickviewZoomBtn = document.getElementById('quickviewZoomBtn');
+    // FAVORITES OPEN
+    if (t.closest('#favNavBtn')) {
+        e.preventDefault();
+        renderFavorites();
+        openModal('favModal');
+        return;
+    }
 
-let currentQuickViewProduct = null;
+    // AUTH OPEN
+    if (t.closest('#authBtn')) {
+        e.preventDefault();
+        openModal('authModal');
+        return;
+    }
 
-const quickViewBtns = document.querySelectorAll('.quick-view-btn');
-quickViewBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    // SEARCH
+    if (t.closest('#searchBtn')) {
+        e.preventDefault();
+        const query = prompt('Поиск товаров:');
+        if (query && query.trim()) {
+            const q = query.toLowerCase().trim();
+            let found = 0;
+            document.querySelectorAll('.product-card').forEach(card => {
+                const name = card.querySelector('.product-name').textContent.toLowerCase();
+                const mat = card.querySelector('.product-material').textContent.toLowerCase();
+                const show = name.includes(q) || mat.includes(q);
+                card.classList.toggle('hidden', !show);
+                if (show) { card.classList.add('animated'); found++; }
+            });
+            if (found === 0) {
+                alert('Ничего не найдено');
+                document.querySelectorAll('.product-card').forEach(c => c.classList.remove('hidden'));
+            }
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+            document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+        }
+        return;
+    }
+
+    // CLOSE CART
+    if (t.closest('#cartClose') || t.closest('#cartBackdrop')) {
+        closeModal('cartModal');
+        return;
+    }
+
+    // CLOSE FAV
+    if (t.closest('#favClose') || t.closest('#favBackdrop')) {
+        closeModal('favModal');
+        return;
+    }
+
+    // CLOSE AUTH
+    if (t.closest('#authClose') || t.closest('#authBackdrop')) {
+        closeModal('authModal');
+        return;
+    }
+
+    // CLOSE QUICKVIEW
+    if (t.closest('#quickviewClose') || t.closest('#quickviewBackdrop')) {
+        closeModal('quickviewModal');
+        return;
+    }
+
+    // REMOVE FROM CART
+    const removeCart = t.closest('[data-remove-cart]');
+    if (removeCart) {
+        cart = cart.filter(i => i.id !== removeCart.dataset.removeCart);
+        updateCart();
+        return;
+    }
+
+    // REMOVE FROM FAV
+    const removeFav = t.closest('[data-remove-fav]');
+    if (removeFav) {
+        favorites = favorites.filter(f => f.id !== removeFav.dataset.removeFav);
+        updateFavCount();
+        renderFavorites();
+        const fb = document.querySelector('.favorite-btn[data-id="' + removeFav.dataset.removeFav + '"]');
+        if (fb) fb.classList.remove('active');
+        return;
+    }
+
+    // ADD TO CART
+    const addBtn = t.closest('.add-to-cart-btn');
+    if (addBtn) {
         e.stopPropagation();
-        const card = btn.closest('.product-card');
+        const { id, name, price } = addBtn.dataset;
+        const ex = cart.find(i => i.id === id);
+        if (ex) ex.quantity++;
+        else cart.push({ id, name, price: parseInt(price), quantity: 1 });
+        updateCart();
+        addBtn.style.background = '#22c55e';
+        setTimeout(() => { addBtn.style.background = ''; }, 800);
+        return;
+    }
+
+    // FAVORITE TOGGLE
+    const favBtn = t.closest('.favorite-btn');
+    if (favBtn) {
+        e.stopPropagation();
+        const id = favBtn.dataset.id;
+        const card = favBtn.closest('.product-card');
+        const name = card.querySelector('.product-name').textContent;
+        const img = card.querySelector('.product-img').src;
+        const price = card.querySelector('.price-current').textContent;
+        favBtn.classList.toggle('active');
+        if (favBtn.classList.contains('active')) {
+            if (!favorites.find(f => f.id === id)) favorites.push({ id, name, img, price });
+        } else {
+            favorites = favorites.filter(f => f.id !== id);
+        }
+        updateFavCount();
+        return;
+    }
+
+    // QUICK VIEW
+    const qvBtn = t.closest('.quick-view-btn');
+    if (qvBtn) {
+        e.stopPropagation();
+        const card = qvBtn.closest('.product-card');
         openQuickView(card);
-    });
+        return;
+    }
+
+    // QUICKVIEW FAV
+    if (t.closest('#quickviewFavBtn')) {
+        const qvFav = document.getElementById('quickviewFavBtn');
+        qvFav.classList.toggle('active');
+        return;
+    }
+
+    // QUICKVIEW CART
+    if (t.closest('#quickviewCartBtn')) {
+        const qvName = document.getElementById('quickviewName').textContent;
+        const qvPrice = document.getElementById('quickviewPrice').textContent;
+        const qvId = qvName.replace(/\s/g, '_');
+        const ex = cart.find(i => i.id === qvId);
+        const numPrice = parseInt(qvPrice.replace(/[^\d]/g, ''));
+        if (ex) ex.quantity++;
+        else cart.push({ id: qvId, name: qvName, price: numPrice, quantity: 1 });
+        updateCart();
+        const btn = document.getElementById('quickviewCartBtn');
+        btn.style.transform = 'scale(1.3)';
+        btn.style.background = 'var(--accent-orange)';
+        setTimeout(() => { btn.style.transform = ''; btn.style.background = ''; }, 400);
+        return;
+    }
+
+    // QUICKVIEW ZOOM
+    if (t.closest('#quickviewZoomBtn') || t.closest('.quickview-img')) {
+        document.getElementById('quickviewImg').classList.toggle('zoomed');
+        return;
+    }
+
+    // SIZE OPTIONS
+    const sizeOpt = t.closest('.size-option');
+    if (sizeOpt) {
+        const parent = sizeOpt.closest('.size-options') || sizeOpt.closest('.quickview-sizes-list');
+        if (parent) {
+            parent.querySelectorAll('.size-option, .quickview-size').forEach(o => o.classList.remove('active'));
+            sizeOpt.classList.add('active');
+        }
+        return;
+    }
+
+    // QUICKVIEW SIZE
+    const qvSize = t.closest('.quickview-size');
+    if (qvSize) {
+        document.querySelectorAll('.quickview-size').forEach(o => o.classList.remove('active'));
+        qvSize.classList.add('active');
+        return;
+    }
+
+    // FILTER
+    const filterBtn = t.closest('.filter-btn');
+    if (filterBtn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        filterBtn.classList.add('active');
+        const filter = filterBtn.dataset.filter;
+        document.querySelectorAll('.product-card').forEach((card, i) => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.classList.remove('hidden');
+                card.style.animation = 'fadeUp 0.5s ease ' + (i * 0.1) + 's forwards';
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+        return;
+    }
 });
 
+// === QUICK VIEW ===
 function openQuickView(card) {
     const img = card.querySelector('.product-img');
     const name = card.querySelector('.product-name').textContent;
@@ -349,160 +310,99 @@ function openQuickView(card) {
     const price = card.querySelector('.price-current').textContent;
     const priceOld = card.querySelector('.price-old');
     const sizes = card.querySelectorAll('.size-option');
-    const id = card.querySelector('.add-to-cart-btn')?.dataset.id || '';
-    const priceNum = card.querySelector('.add-to-cart-btn')?.dataset.price || '';
 
-    currentQuickViewProduct = { id, name, price: priceNum };
+    document.getElementById('quickviewImg').src = img.src;
+    document.getElementById('quickviewImg').alt = name;
+    document.getElementById('quickviewImg').classList.remove('zoomed');
+    document.getElementById('quickviewName').textContent = name;
+    document.getElementById('quickviewMaterial').textContent = material;
+    document.getElementById('quickviewPrice').textContent = price;
 
-    quickviewImg.src = img.src;
-    quickviewImg.alt = name;
-    quickviewImg.classList.remove('zoomed');
-    quickviewName.textContent = name;
-    quickviewMaterial.textContent = material;
-    quickviewPrice.textContent = price;
-    quickviewPriceOld.textContent = priceOld ? priceOld.textContent : '';
-    quickviewPriceOld.style.display = priceOld ? 'inline' : 'none';
+    const po = document.getElementById('quickviewPriceOld');
+    if (priceOld) { po.textContent = priceOld.textContent; po.style.display = 'inline'; }
+    else { po.style.display = 'none'; }
 
-    quickviewSizes.innerHTML = '';
+    const qs = document.getElementById('quickviewSizes');
+    qs.innerHTML = '';
     sizes.forEach(s => {
-        const sizeEl = document.createElement('span');
-        sizeEl.className = 'quickview-size' + (s.classList.contains('active') ? ' active' : '');
-        sizeEl.textContent = s.textContent;
-        sizeEl.addEventListener('click', () => {
-            quickviewSizes.querySelectorAll('.quickview-size').forEach(x => x.classList.remove('active'));
-            sizeEl.classList.add('active');
-        });
-        quickviewSizes.appendChild(sizeEl);
+        const el = document.createElement('span');
+        el.className = 'quickview-size' + (s.classList.contains('active') ? ' active' : '');
+        el.textContent = s.textContent;
+        qs.appendChild(el);
     });
 
-    quickviewFavBtn.classList.remove('active');
-    if (favorites.find(f => f.id === id)) {
-        quickviewFavBtn.classList.add('active');
-    }
+    const qvFav = document.getElementById('quickviewFavBtn');
+    qvFav.classList.remove('active');
 
-    quickviewModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    openModal('quickviewModal');
 }
 
-function closeQuickView() {
-    quickviewModal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-quickviewBackdrop.addEventListener('click', closeQuickView);
-quickviewClose.addEventListener('click', closeQuickView);
-
-// Quick View Zoom
-quickviewImg.addEventListener('click', () => quickviewImg.classList.toggle('zoomed'));
-quickviewZoomBtn.addEventListener('click', () => quickviewImg.classList.toggle('zoomed'));
-
-// Quick View Favorite
-quickviewFavBtn.addEventListener('click', () => {
-    if (!currentQuickViewProduct) return;
-    const id = currentQuickViewProduct.id;
-    const name = currentQuickViewProduct.name;
-    const img = quickviewImg.src;
-    const price = quickviewPrice.textContent;
-
-    quickviewFavBtn.classList.toggle('active');
-
-    if (quickviewFavBtn.classList.contains('active')) {
-        if (!favorites.find(f => f.id === id)) {
-            favorites.push({ id, name, img, price });
+// === SCROLL ANIMATIONS ===
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('animated'), parseInt(entry.target.dataset.delay || 0));
         }
-    } else {
-        favorites = favorites.filter(f => f.id !== id);
-    }
-
-    updateFavCount();
-
-    const cardBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
-    if (cardBtn) {
-        cardBtn.classList.toggle('active', quickviewFavBtn.classList.contains('active'));
-    }
-});
-
-// Quick View Add to Cart
-quickviewCartBtn.addEventListener('click', () => {
-    if (!currentQuickViewProduct || !currentQuickViewProduct.id) return;
-    const { id, name, price } = currentQuickViewProduct;
-    const existingItem = cart.find(item => item.id === id);
-    if (existingItem) {
-        existingItem.quantity++;
-    } else {
-        cart.push({ id, name, price: parseInt(price), quantity: 1 });
-    }
-    updateCart();
-
-    quickviewCartBtn.style.transform = 'scale(1.3)';
-    quickviewCartBtn.style.background = 'var(--accent-orange)';
-    quickviewCartBtn.style.borderColor = 'var(--accent-orange)';
-    setTimeout(() => {
-        quickviewCartBtn.style.transform = '';
-        quickviewCartBtn.style.background = '';
-        quickviewCartBtn.style.borderColor = '';
-    }, 400);
-});
-
-// === CONTACT FORM ===
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = contactForm.querySelector('.submit-btn');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<span>Отправлено!</span>';
-        btn.style.background = '#22c55e';
-        btn.style.color = '#fff';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '';
-            btn.style.color = '';
-            contactForm.reset();
-        }, 2000);
     });
-}
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+// === COUNTER ===
+const cObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const target = parseInt(entry.target.dataset.count);
+            let current = 0;
+            const inc = target / 50;
+            const timer = setInterval(() => {
+                current += inc;
+                if (current >= target) { entry.target.textContent = target.toLocaleString(); clearInterval(timer); }
+                else entry.target.textContent = Math.floor(current).toLocaleString();
+            }, 40);
+            cObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-number').forEach(el => cObserver.observe(el));
 
 // === SMOOTH SCROLL ===
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 
 // === PARALLAX ===
 window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
     const hero = document.querySelector('.hero-content');
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-        hero.style.opacity = 1 - (scrolled / window.innerHeight);
+    const s = window.scrollY;
+    if (hero && s < window.innerHeight) {
+        hero.style.transform = 'translateY(' + (s * 0.3) + 'px)';
+        hero.style.opacity = 1 - (s / window.innerHeight);
     }
 });
 
-// === KEYBOARD SHORTCUTS ===
+// === ESCAPE KEY ===
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        closeCart();
-        closeFav();
-        closeAuth();
-        closeQuickView();
+        ['cartModal', 'favModal', 'authModal', 'quickviewModal'].forEach(closeModal);
         mobileMenuBtn.classList.remove('active');
         mobileMenu.classList.remove('active');
         document.body.style.overflow = '';
     }
 });
 
-// === ANIMATION CSS ===
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-`;
-document.head.appendChild(style);
+// === CONTACT FORM ===
+const cf = document.querySelector('.contact-form');
+if (cf) {
+    cf.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = cf.querySelector('.submit-btn');
+        btn.innerHTML = '<span>Отправлено!</span>';
+        btn.style.background = '#22c55e';
+        btn.style.color = '#fff';
+        setTimeout(() => { btn.innerHTML = '<span>Отправить</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'; btn.style.background = ''; btn.style.color = ''; cf.reset(); }, 2000);
+    });
+}
