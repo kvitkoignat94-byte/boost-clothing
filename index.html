@@ -31,6 +31,12 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </button>
+                <button class="fav-nav-btn" id="favNavBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                    </svg>
+                    <span class="fav-count">0</span>
+                </button>
                 <button class="cart-btn" id="cartBtn">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
@@ -38,6 +44,12 @@
                         <path d="M16 10a4 4 0 01-8 0"></path>
                     </svg>
                     <span class="cart-count">0</span>
+                </button>
+                <button class="auth-btn" id="authBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
                 </button>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <span></span>
@@ -689,6 +701,57 @@
                                 <path d="M16 10a4 4 0 01-8 0"></path>
                             </svg>
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div class="cart-modal" id="favModal">
+        <div class="cart-backdrop" id="favBackdrop"></div>
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h3>Избранное</h3>
+                <button class="cart-close" id="favClose">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-items" id="favItems">
+                <div class="cart-empty">Список избранного пуст</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="cart-modal" id="authModal">
+        <div class="cart-backdrop" id="authBackdrop"></div>
+        <div class="auth-panel">
+            <button class="cart-close" id="authClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="auth-content">
+                <h2 class="auth-title">Вход в аккаунт</h2>
+                <p class="auth-subtitle">Выбери удобный способ входа</p>
+                <div class="auth-buttons">
+                    <a href="https://t.me/boost_42" target="_blank" class="auth-tg-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21.198 2.433a2.242 2.242 0 00-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 01-2.849 1.09c-.42.147-.99.332-1.473.901-.728.855.101 1.643.248 1.871l3.216 1.155c.165.621.435 1.273.847 1.805l1.526 1.948c.277.422.643.843 1.136.943.493.1.867-.076 1.136-.345l1.863-1.863c.269-.269.442-.643.527-1.036l.614-2.782c.078-.353.14-.71.19-1.068l.094-.672c.049-.35.064-.643.082-.955l.026-.454.011-.227v-.062c.012-.184.022-.37.022-.557a9.693 9.693 0 00-.022-1.114l-.011-.227-.026-.454c-.018-.312-.033-.605-.082-.955l-.094-.672c-.05-.358-.112-.715-.19-1.068l-.614-2.782c-.085-.393-.258-.767-.527-1.036l-1.863-1.863c-.269-.269-.643-.442-1.136-.345a2.261 2.261 0 00-1.136.943l-1.526 1.948c-.412.532-.682 1.184-.847 1.805l-3.216 1.155c-.147.228-.376.016-.248-.871.144-.686.524-1.271.973-1.748.449-.477 1.075-.853 1.776-1.076l8.609-3.33a2.242 2.242 0 001.022-.215z"></path>
+                        </svg>
+                        <span>Войти через Telegram</span>
+                    </a>
+                    <div class="auth-divider">
+                        <span>или</span>
+                    </div>
+                    <div class="auth-phone-form">
+                        <input type="tel" placeholder="+7 (___) ___-__-__" class="auth-phone-input" id="authPhoneInput">
+                        <button class="auth-phone-btn" id="authPhoneBtn">Получить код</button>
                     </div>
                 </div>
             </div>

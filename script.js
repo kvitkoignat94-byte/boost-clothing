@@ -242,16 +242,61 @@ const favoriteBtns = document.querySelectorAll('.favorite-btn');
 favoriteBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
+        const id = btn.dataset.id;
+        const card = btn.closest('.product-card');
+        const name = card.querySelector('.product-name').textContent;
+        const img = card.querySelector('.product-img').src;
+        const price = card.querySelector('.price-current').textContent;
+
         btn.classList.toggle('active');
 
         if (btn.classList.contains('active')) {
+            if (!favorites.find(f => f.id === id)) {
+                favorites.push({ id, name, img, price });
+            }
             btn.style.transform = 'scale(1.3)';
-            setTimeout(() => {
-                btn.style.transform = '';
-            }, 200);
+            setTimeout(() => { btn.style.transform = ''; }, 200);
+        } else {
+            favorites = favorites.filter(f => f.id !== id);
         }
+
+        updateFavCount();
+        renderFavorites();
     });
 });
+
+function updateFavCount() {
+    favCount.textContent = favorites.length;
+    favCount.classList.toggle('visible', favorites.length > 0);
+}
+
+function renderFavorites() {
+    if (favorites.length === 0) {
+        favItems.innerHTML = '<div class="cart-empty">Список избранного пуст</div>';
+    } else {
+        favItems.innerHTML = favorites.map(item => `
+            <div class="cart-item">
+                <div class="cart-item-image">
+                    <img src="${item.img}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+                </div>
+                <div class="cart-item-details">
+                    <span class="cart-item-name">${item.name}</span>
+                    <span class="cart-item-price">${item.price}</span>
+                    <button class="cart-item-remove" onclick="removeFromFav('${item.id}')">Удалить</button>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+function removeFromFav(id) {
+    favorites = favorites.filter(f => f.id !== id);
+    updateFavCount();
+    renderFavorites();
+
+    const btn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
+    if (btn) btn.classList.remove('active');
+}
 
 // === SIZE SELECTION ===
 const sizeOptions = document.querySelectorAll('.size-option');
@@ -266,6 +311,7 @@ sizeOptions.forEach(option => {
 
 // === CART ===
 let cart = [];
+let favorites = [];
 const cartBtn = document.getElementById('cartBtn');
 const cartModal = document.getElementById('cartModal');
 const cartBackdrop = document.getElementById('cartBackdrop');
@@ -273,6 +319,16 @@ const cartClose = document.getElementById('cartClose');
 const cartItems = document.getElementById('cartItems');
 const cartTotal = document.getElementById('cartTotal');
 const cartCount = document.querySelector('.cart-count');
+const favNavBtn = document.getElementById('favNavBtn');
+const favModal = document.getElementById('favModal');
+const favBackdrop = document.getElementById('favBackdrop');
+const favClose = document.getElementById('favClose');
+const favItems = document.getElementById('favItems');
+const favCount = document.querySelector('.fav-count');
+const authBtn = document.getElementById('authBtn');
+const authModal = document.getElementById('authModal');
+const authBackdrop = document.getElementById('authBackdrop');
+const authClose = document.getElementById('authClose');
 
 cartBtn.addEventListener('click', () => {
     cartModal.classList.add('active');
@@ -284,6 +340,32 @@ cartClose.addEventListener('click', closeCart);
 
 function closeCart() {
     cartModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+favNavBtn.addEventListener('click', () => {
+    favModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+favBackdrop.addEventListener('click', closeFav);
+favClose.addEventListener('click', closeFav);
+
+function closeFav() {
+    favModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+authBtn.addEventListener('click', () => {
+    authModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+authBackdrop.addEventListener('click', closeAuth);
+authClose.addEventListener('click', closeAuth);
+
+function closeAuth() {
+    authModal.classList.remove('active');
     document.body.style.overflow = '';
 }
 
@@ -402,6 +484,9 @@ window.addEventListener('scroll', () => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeCart();
+        closeFav();
+        closeAuth();
+        closeQuickView();
         mobileMenuBtn.classList.remove('active');
         mobileMenu.classList.remove('active');
         document.body.style.overflow = '';
