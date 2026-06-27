@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БУСТ — Минималистичная Одежда</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cursor follower -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">БУСТ</span>
+                <span class="logo-dot"></span>
+            </a>
+            <div class="nav-links">
+                <a href="#catalog" class="nav-link" data-text="Каталог">Каталог</a>
+                <a href="#about" class="nav-link" data-text="О нас">О нас</a>
+                <a href="#contact" class="nav-link" data-text="Контакт">Контакт</a>
+            </div>
+            <button class="cart-btn" id="cartBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 01-8 0"></path>
+                </svg>
+                <span class="cart-count">0</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#catalog" class="mobile-link">Каталог</a>
+        <a href="#about" class="mobile-link">О нас</a>
+        <a href="#contact" class="mobile-link">Контакт</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="grain-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge" data-animate="fade-up">Спринг/Лето 2026</div>
+            <h1 class="hero-title" data-animate="fade-up" data-delay="100">
+                <span class="title-line">МИНИМАЛИЗМ</span>
+                <span class="title-line title-outline">В КАЖДОЙ</span>
+                <span class="title-line">ДЕТАЛИ</span>
+            </h1>
+            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">Одежда для тех, кто ценит чистоту формы и совершенство материалов</p>
+            <a href="#catalog" class="hero-cta" data-animate="fade-up" data-delay="300">
+                <span>Смотреть коллекцию</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+        <div class="scroll-indicator" data-animate="fade-up" data-delay="400">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span>БЕЛЫЙ</span>
+                <span class="marquee-dot">●</span>
+                <span>ЧЕРНЫЙ</span>
+                <span class="marquee-dot">●</span>
+                <span>МИНИМАЛИЗМ</span>
+                <span class="marquee-dot">●</span>
+                <span>СТИЛЬ</span>
+                <span class="marquee-dot">●</span>
+                <span>КАЧЕСТВО</span>
+                <span class="marquee-dot">●</span>
+                <span>БЕЛЫЙ</span>
+                <span class="marquee-dot">●</span>
+                <span>ЧЕРНЫЙ</span>
+                <span class="marquee-dot">●</span>
+                <span>МИНИМАЛИЗМ</span>
+                <span class="marquee-dot">●</span>
+                <span>СТИЛЬ</span>
+                <span class="marquee-dot">●</span>
+                <span>КАЧЕСТВО</span>
+                <span class="marquee-dot">●</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Catalog Section -->
+    <section class="catalog" id="catalog">
+        <div class="section-header">
+            <span class="section-label" data-animate="fade-up">01 — Каталог</span>
+            <h2 class="section-title" data-animate="fade-up" data-delay="100">НАША КОЛЛЕКЦИЯ</h2>
+            <p class="section-desc" data-animate="fade-up" data-delay="200">Тщательно отобранные семплы для вашего гардероба</p>
+        </div>
+
+        <div class="catalog-filters" data-animate="fade-up" data-delay="300">
+            <button class="filter-btn active" data-filter="all">Все</button>
+            <button class="filter-btn" data-filter="tops">Верх</button>
+            <button class="filter-btn" data-filter="bottoms">Низ</button>
+            <button class="filter-btn" data-filter="outer">Верхняя одежда</button>
+            <button class="filter-btn" data-filter="accessories">Аксессуары</button>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="tops" data-animate="fade-up">
+                <div class="product-image">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="20" width="120" height="30" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M40 50 L20 80 L20 200 L180 200 L180 80 L160 50" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="100" y1="80" x2="100" y2="150" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+                        </svg>
+                    </div>
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <span class="sample-badge">Семпл</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Белая Oversized футболка</h3>
+                    <p class="product-material">100% органический хлопок</p>
+                    <div class="product-price">
+                        <span class="price">2 490 ₽</span>
+                        <button class="add-to-cart" data-id="1" data-name="Белая Oversized футболка" data-price="2490">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-category="bottoms" data-animate="fade-up" data-delay="100">
+                <div class="product-image">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 20 L150 20 L155 100 L120 220 L100 220 L100 100 L80 220 L60 220 L45 100 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="100" y1="20" x2="100" y2="100" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+                        </svg>
+                    </div>
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <span class="sample-badge">Семпл</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Черные прямые брюки</h3>
+                    <p class="product-material">Полиэстер с эластаном</p>
+                    <div class="product-price">
+                        <span class="price">3 990 ₽</span>
+                        <button class="add-to-cart" data-id="2" data-name="Черные прямые брюки" data-price="3990">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-category="outer" data-animate="fade-up" data-delay="200">
+                <div class="product-image">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M60 20 L140 20 L145 40 L180 60 L180 200 L20 200 L20 60 L55 40 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="100" y1="40" x2="100" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+                            <circle cx="100" cy="60" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <circle cx="100" cy="90" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <span class="sample-badge">Семпл</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Белое пальто</h3>
+                    <p class="product-material">Шерсть с кашемиром</p>
+                    <div class="product-price">
+                        <span class="price">8 990 ₽</span>
+                        <button class="add-to-cart" data-id="3" data-name="Белое пальто" data-price="8990">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card" data-category="accessories" data-animate="fade-up" data-delay="300">
+                <div class="product-image">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="60" width="120" height="80" rx="10" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="40" y1="100" x2="160" y2="100" stroke="currentColor" stroke-width="1"/>
+                            <rect x="80" y="90" width="40" height="20" rx="2" stroke="currentColor" stroke-width="1" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <span class="sample-badge">Семпл</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Черный мини-бэг</h3>
+                    <p class="product-material">Веганская кожа</p>
+                    <div class="product-price">
+                        <span class="price">4 490 ₽</span>
+                        <button class="add-to-cart" data-id="4" data-name="Черный мини-бэг" data-price="4490">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-category="tops" data-animate="fade-up">
+                <div class="product-image">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 30 L70 20 L130 20 L150 30 L155 60 L170 70 L170 180 L30 180 L30 70 L45 60 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="100" y1="60" x2="100" y2="140" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+                            <path d="M70 60 L130 60" stroke="currentColor" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <span class="sample-badge">Семпл</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Черная рубашка</h3>
+                    <p class="product-material">100% хлопок</p>
+                    <div class="product-price">
+                        <span class="price">3 290 ₽</span>
+                        <button class="add-to-cart" data-id="5" data-name="Черная рубашка" data-price="3290">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card" data-category="bottoms" data-animate="fade-up" data-delay="100">
+                <div class="product-image">
+                    <div class="product-placeholder">
+                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M60 30 L140 30 L140 60 L145 200 L55 200 L60 60 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="100" y1="30" x2="100" y2="60" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+                            <rect x="85" y="40" width="30" height="15" rx="2" stroke="currentColor" stroke-width="1" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="product-overlay">
+                        <button class="quick-view-btn">Быстрый просмотр</button>
+                    </div>
+                    <span class="sample-badge">Семпл</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Белые широкие штаны</h3>
+                    <p class="product-material">Хлопок с льном</p>
+                    <div class="product-price">
+                        <span class="price">4 190 ₽</span>
+                        <button class="add-to-cart" data-id="6" data-name="Белые широкие штаны" data-price="4190">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <span class="section-label" data-animate="fade-up">02 — О нас</span>
+                <h2 class="about-title" data-animate="fade-up" data-delay="100">ФИЛОСОФИЯ<br><span class="text-outline">ЧИСТОЙ ФОРМЫ</span></h2>
+                <div class="about-text" data-animate="fade-up" data-delay="200">
+                    <p>БУСТ — это бренд для тех, кто верит, что истинная элегантность кроется в простоте. Мы создаём одежду, которая говорит громче любых слов.</p>
+                    <p>Каждая деталь продумана до мелочей: от выбора ткани до последнего шва. Наши семплы — это возможность ощутить качество до покупки.</p>
+                </div>
+                <div class="about-stats" data-animate="fade-up" data-delay="300">
+                    <div class="stat">
+                        <span class="stat-number" data-count="2500">0</span>
+                        <span class="stat-label">Довольных клиентов</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="150">0</span>
+                        <span class="stat-label">Позиций в каталоге</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="98">0</span>
+                        <span class="stat-label">% положительных отзывов</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual" data-animate="fade-left">
+                <div class="visual-grid">
+                    <div class="visual-item"></div>
+                    <div class="visual-item"></div>
+                    <div class="visual-item"></div>
+                    <div class="visual-item"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-content">
+                <span class="section-label" data-animate="fade-up">03 — Контакт</span>
+                <h2 class="contact-title" data-animate="fade-up" data-delay="100">СВЯЖИТЕСЬ<br>С НАМИ</h2>
+                <p class="contact-desc" data-animate="fade-up" data-delay="200">Готовы ответить на все ваши вопросы</p>
+            </div>
+            <form class="contact-form" data-animate="fade-up" data-delay="300">
+                <div class="form-group">
+                    <input type="text" id="name" required placeholder=" ">
+                    <label for="name">Ваше имя</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required placeholder=" ">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="4" required placeholder=" "></textarea>
+                    <label for="message">Сообщение</label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Отправить</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <span class="logo-text">БУСТ</span>
+                    <span class="logo-dot"></span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Telegram</a>
+                    <a href="#">VK</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 БУСТ. Все права защищены.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-backdrop" id="cartBackdrop"></div>
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h3>Корзина</h3>
+                <button class="cart-close" id="cartClose">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty">Корзина пуста</div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span id="cartTotal">0 ₽</span>
+                </div>
+                <button class="checkout-btn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
